@@ -15,6 +15,11 @@ class LeakActivity : AppCompatActivity() {
         GlobalSingleton.register(listener)
     }
 
+    override fun onDestroy() {
+        super.onDestroy()
+        GlobalSingleton.unregister(listener)
+    }
+
     private class Listener : GlobalSingletonListener {
         override fun onEvent() {}
     }
